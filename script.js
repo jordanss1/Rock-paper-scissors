@@ -41,6 +41,7 @@ const mobileText1 = document.getElementsByClassName("all-p1")[0];
 const mobileText2 = document.getElementsByClassName("all-p2")[0];
 
 
+
 const randomChoice = (arr, button) => {
 	const index = Math.floor(Math.random() * arr.length);
 	let sign = arr[index];
@@ -58,7 +59,7 @@ const randomChoice = (arr, button) => {
 		rockText2.setAttribute("style", "text-shadow: 2px 2px 5px red; visibility: visible;")
 		rockText2.innerText = "game over";
 		rockText1.style.visibility = "visible";
-		rock1Text.innerText = "paper";
+		rockText1.innerText = "paper";
 		mobileText1.style.visibility = "visible";
 		mobileText1.innerText = "paper";
 		mobileText2.setAttribute("style", "text-shadow: 2px 2px 5px red; visibility: visible;")
@@ -138,15 +139,15 @@ const randomChoice = (arr, button) => {
 
 buttons.forEach(button => {
 	button.addEventListener("click", e => {
+		
+		const arrayOfText = [rockText1, rockText2, paperText1, paperText2, scissorsText1, 
+		scissorsText2, mobileText1, mobileText2];
+
 		const timeForVisible = () => {
-			rockText1.style.visibility = "hidden";
-			rockText2.style.visibility = "hidden";
-			paperText1.style.visibility = "hidden";
-			paperText2.style.visibility = "hidden";
-			scissorsText1.style.visibility = "hidden";
-			scissorsText2.style.visibility = "hidden";
-			mobileText1.style.visibility = "hidden";
-			mobileText2.style.visibility = "hidden";
+			arrayOfText.forEach(text => {
+				text.style.visibility = "hidden";
+			})
+
 			buttons.forEach(button => {
 				button.disabled = false;
 			})
